@@ -4,30 +4,51 @@ defmodule FormexVex.Mixfile do
   def project do
     [app: :formex_vex,
      version: "0.1.0",
-     elixir: "~> 1.4",
+     elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     package: package(),
+     description: description(),
+     docs: [main: "readme",
+          extras: ["README.md"]],
+     source_url: "https://github.com/jakub-zawislak/formex_vex",
+     elixirc_paths: elixirc_paths(Mix.env),
+     aliases: aliases()
+    ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    []
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    deps = [{:vex, "~> 0.6.0"}]
+
+    if Mix.env == :prod do
+      deps ++ {:formex, "~> 0.5.0", only: :dev}
+    else # because of jakub-zawislak/phoenix-forms
+      deps
+    end
+  end
+
+  defp description do
+    """
+    Vex validator adapter for Formex
+    """
+  end
+
+  defp package do
+    [maintainers: ["Jakub Zawiślak"],
+     licenses: ["MIT"],
+     files: ~w(lib CHANGELOG.md LICENSE.md mix.exs README.md),
+     links: %{github: "https://github.com/jakub-zawislak/formex"}]
+  end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
+  defp aliases do
+    ["test": ["ecto.migrate", "test"]]
   end
 end

@@ -1,18 +1,43 @@
-defmodule FormexVex do
-  @moduledoc """
-  Documentation for FormexVex.
-  """
+defmodule Formex.Validator.Vex do
+  @behaviour Formex.Validator
+  alias Formex.Form
 
-  @doc """
-  Hello world.
+  @spec validate(Form.t) :: Form.t
+  def validate(form) do
 
-  ## Examples
+    # errors_struct = if form.type.validate_whole_struct? do
+    #   form.new_struct
+    #   |> Vex.errors
+    #   |> Enum.reduce([], fn error ->
+    #     IO.inspect error
 
-      iex> FormexVex.hello
-      :world
+    #   end)
+    # else
+    #   []
+    # end
 
-  """
-  def hello do
-    :world
+    errors_type = form
+    |> Form.get_fields_validatable
+    |> Enum.map(fn item ->
+      if item.validation do
+        errors = form.new_struct
+        |> Map.from_struct()
+        |> Vex.errors([{item.name, item.validation}])
+        |> Enum.map(fn error ->
+          message = elem(error, 3)
+          {message, []}
+        end)
+
+        {item.name, errors}
+      else
+        {item.name, []}
+      end
+    end)
+
+    errors = errors_type
+
+    form
+    |> Map.put(:errors, errors)
   end
+
 end

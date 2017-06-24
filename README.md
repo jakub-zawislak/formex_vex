@@ -1,11 +1,6 @@
-# FormexVex
-
-**TODO: Add description**
+# [Vex](https://github.com/CargoSense/vex) validator adapter for Formex
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `formex_vex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -13,7 +8,23 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/formex_vex](https://hexdocs.pm/formex_vex).
+`config/config.exs`
+```elixir
+config :formex,
+  validator: Formex.Validator.Vex
+```
 
+See [Formex.Validator docs](https://hexdocs.pm/formex//Formex.Validator.html) for more info
+
+## Usage
+
+```elixir
+  def build_form(form) do
+    form
+    |> add(:name, :text_input, validation: [presence: :true, length: [in: 10..150]])
+    |> add(:content, :textarea, validation: [presence: :true])
+    # ...
+  end
+```
+
+See [Vex documentation](https://github.com/CargoSense/vex#supported-validations) for more options
