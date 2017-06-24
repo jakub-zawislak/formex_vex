@@ -41,7 +41,7 @@ defmodule FormexVex.Mixfile do
   defp package do
     [maintainers: ["Jakub Zawiślak"],
      licenses: ["MIT"],
-     files: ~w(lib CHANGELOG.md LICENSE.md mix.exs README.md),
+     files: ~w(lib LICENSE.md mix.exs README.md),
      links: %{github: "https://github.com/jakub-zawislak/formex"}]
   end
 
