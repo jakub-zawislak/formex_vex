@@ -23,11 +23,14 @@ defmodule FormexVex.Mixfile do
   end
 
   defp deps do
-    deps = [{:vex, "~> 0.6.0"}]
+    deps = [
+      {:vex, "~> 0.6.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev}
+    ]
 
-    if Mix.env == :prod do
-      deps ++ {:formex, "~> 0.5.0", only: :dev}
-    else # because of jakub-zawislak/phoenix-forms
+    if !System.get_env("FORMEX_DEV") do
+      deps ++ [{:formex, "~> 0.5.0"}]
+    else
       deps
     end
   end
