@@ -1,4 +1,4 @@
-defmodule FormexVex.Mixfile do
+defmodule Formex.Validator.Vex.Mixfile do
   use Mix.Project
 
   def project do
