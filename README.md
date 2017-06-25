@@ -14,7 +14,7 @@ config :formex,
   validator: Formex.Validator.Vex
 ```
 
-See [Formex.Validator docs](https://hexdocs.pm/formex//Formex.Validator.html) for more info
+See [Formex.Validator docs](https://hexdocs.pm/formex/Formex.Validator.html) for more info
 
 ## Usage
 
