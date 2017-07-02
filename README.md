@@ -22,7 +22,7 @@ See [Formex.Validator docs](https://hexdocs.pm/formex/Formex.Validator.html) for
   def build_form(form) do
     form
     |> add(:name, :text_input, validation: [presence: :true, length: [in: 10..150]])
-    |> add(:content, :textarea, validation: [presence: :true])
+    |> add(:content, :textarea, validation: [presence: [message: "can't be blank"]])
     # ...
   end
 ```

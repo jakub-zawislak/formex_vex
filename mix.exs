@@ -13,8 +13,7 @@ defmodule Formex.Validator.Vex.Mixfile do
      docs: [main: "readme",
           extras: ["README.md"]],
      source_url: "https://github.com/jakub-zawislak/formex_vex",
-     elixirc_paths: elixirc_paths(Mix.env),
-     aliases: aliases()
+     elixirc_paths: elixirc_paths(Mix.env)
     ]
   end
 
@@ -50,8 +49,4 @@ defmodule Formex.Validator.Vex.Mixfile do
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
-
-  defp aliases do
-    ["test": ["ecto.migrate", "test"]]
-  end
 end
