@@ -3,7 +3,7 @@ defmodule Formex.Validator.Vex.Mixfile do
 
   def project do
     [app: :formex_vex,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -28,7 +28,7 @@ defmodule Formex.Validator.Vex.Mixfile do
     ]
 
     if !System.get_env("FORMEX_DEV") do
-      deps ++ [{:formex, "~> 0.5.0"}]
+      deps ++ [{:formex, ">= 0.5.0 and < 0.7.0"}]
     else
       deps
     end
