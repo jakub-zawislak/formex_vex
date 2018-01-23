@@ -44,7 +44,7 @@ defmodule Formex.Validator.Vex.Mixfile do
     [maintainers: ["Jakub Zawiślak"],
      licenses: ["MIT"],
      files: ~w(lib LICENSE.md mix.exs README.md),
-     links: %{github: "https://github.com/jakub-zawislak/formex"}]
+     links: %{github: "https://github.com/jakub-zawislak/formex_vex"}]
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
