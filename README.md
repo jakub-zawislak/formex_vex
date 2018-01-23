@@ -1,4 +1,7 @@
-# [Vex](https://github.com/CargoSense/vex) validator adapter for Formex
+# Formex Vex
+
+Library that integrates [Vex](https://github.com/CargoSense/vex) validator with
+[Formex](https://github.com/jakub-zawislak/formex).
 
 ## Installation
 
